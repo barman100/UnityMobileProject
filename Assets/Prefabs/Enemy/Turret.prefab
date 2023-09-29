@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 8093087863254256294}
   - component: {fileID: 3636781754077698859}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
