@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
@@ -48,6 +49,11 @@ public class MainMenuManager : MonoBehaviour
         selectedLevelSet = setID;
         LevelSelectionPanels[selectedLevelSet].SetActive(true);
         LevelSelectionButtons[selectedLevelSet].interactable = false;
+    }
+
+    public void GoToLevel(string LevelName) 
+    {
+        SceneManager.LoadScene(LevelName);
     }
 
 
