@@ -12,6 +12,7 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
     [SerializeField] SpriteRenderer ArrowSprite;
     [SerializeField] GameObject Target;
     [SerializeField] Blob player;
+    
 
     public static GameObject DraggedInstance;
 
@@ -72,11 +73,13 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         Debug.Log("OnEndDrag");
         DraggedInstance = null;
         Target.SetActive(false);
         Arrow.SetActive(false);
         player.TrigThis();
+        
         RB.AddForce(new Vector2(Target.transform.position.x - RB.transform.position.x, Target.transform.position.y - RB.transform.position.y).normalized * Strength * powerRatio, ForceMode2D.Impulse);
         _offsetToMouse = Vector3.zero;
     }
