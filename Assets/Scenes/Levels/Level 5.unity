@@ -268,18 +268,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-      propertyPath: m_Mass
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-      propertyPath: m_GravityScale
-      value: 10
-      objectReference: {fileID: 0}
+    - target: {fileID: 7595064263846772930, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
+      propertyPath: Arrow
+      value: 
+      objectReference: {fileID: 236336505}
+    - target: {fileID: 7595064263846772930, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 827027985}
+    - target: {fileID: 7595064263846772930, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
+      propertyPath: ArrowSprite
+      value: 
+      objectReference: {fileID: 1432912121}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -291,9 +291,6 @@ PrefabInstance:
       addedObject: {fileID: 827027986}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6093525565292919659, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 39166632}
-    - targetCorrespondingSourceObject: {fileID: 6093525565292919659, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 39166636}
   m_SourcePrefab: {fileID: 100100000, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
@@ -302,48 +299,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6093525565292919659, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
   m_PrefabInstance: {fileID: 39166628}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &39166630 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-  m_PrefabInstance: {fileID: 39166628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &39166631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6093525565293101965, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
   m_PrefabInstance: {fileID: 39166628}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &39166632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39166629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75781c766d9f31644856e690e9a371df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RB: {fileID: 39166630}
-  Strength: 350
-  MaxLength: 5
-  Arrow: {fileID: 236336505}
-  ArrowSprite: {fileID: 1432912121}
-  Target: {fileID: 827027985}
-  player: {fileID: 39166635}
-  Green: {x: 0.34375, y: 0.8476563, z: 0.2578125}
-  Red: {x: 0.7929688, y: 0.1289063, z: 0.078125}
---- !u!114 &39166635 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6093525565303118457, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
-  m_PrefabInstance: {fileID: 39166628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39166629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9f475a53b8e4087aad6179ad5ce543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &39166636
 CircleCollider2D:
   m_ObjectHideFlags: 0
