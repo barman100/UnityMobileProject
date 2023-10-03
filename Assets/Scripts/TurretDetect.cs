@@ -17,20 +17,15 @@ public class TurretDetect : MonoBehaviour
 
     private float ReloadTimer = 0;
     private float FireTimer = 0;
+    private Quaternion InitialRotation;
     private bool isFired = false;
     public bool isLockedOn = false;
     public bool isGunLoaded = true;
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TriggerAlarm()
     {
-        if (collision.gameObject.tag == "player")
-        { isLockedOn = true; }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "player")
-        { isLockedOn = false; }
+        isLockedOn = !isLockedOn;
     }
 
     private void Start()
@@ -39,6 +34,9 @@ public class TurretDetect : MonoBehaviour
         RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
         isFired = false;
         Rocket.transform.localPosition = new Vector3(3, 0, 1);
+        
+        InitialRotation = transform.rotation;
+
     }
 
 
@@ -48,6 +46,9 @@ public class TurretDetect : MonoBehaviour
         { 
             Quaternion rotation = Quaternion.LookRotation
               (Player.position - transform.position, transform.TransformDirection(Vector3.up));
+            
+            
+
             transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
             if (isFired == false)
             {
