@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6093525565293101965, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
+    - target: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
       propertyPath: RocketReserved
       value: 
       objectReference: {fileID: 2937954372915666037, guid: 107bcb875d060824087ad3ba72f01bbc, type: 3}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560288625917873116, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
       propertyPath: m_Name
-      value: New Turret 1
+      value: New Turret Final
       objectReference: {fileID: 0}
     - target: {fileID: 8597647586611339747, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
       propertyPath: m_LocalScale.x
@@ -95,7 +99,42 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6709320386895680134, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7610967751194749746}
+    - targetCorrespondingSourceObject: {fileID: 8375066655492115755, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8198499413200905734}
   m_SourcePrefab: {fileID: 100100000, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+--- !u!1 &6756116312984346972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8375066655492115755, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+  m_PrefabInstance: {fileID: 3024375222866603127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &8198499413200905734
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756116312984346972}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8423128120554487537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6709320386895680134, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}

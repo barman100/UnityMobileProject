@@ -10,65 +10,52 @@ public class TurretDetect : MonoBehaviour
 {
     [SerializeField] GameObject RocketReserved;
     [SerializeField] Transform Player;
-    [SerializeField] float Range;
     [SerializeField] GameObject Rocket;
-    [SerializeField] int FireRate;
+    [SerializeField] public RocketHit RocketFire;
 
-    private Transform RocketScale;
-    private float nextTimeToShoot;
-    
+
+    private float Speed = 1;
+    private bool isShooting = false;
+    private float timer = 0;
     public bool isLockedOn = false;
     public bool isGunLoaded = true;
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "PlayerMain")
         { isLockedOn = true; }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "player")
-        { isLockedOn = false;}
-    }
-
-    private void Start()
-    {
-        
-    }
+        if (collision.gameObject.tag == "PlayerMain")
+        { isLockedOn = false; }
+    } 
     void Update()
     {
-        
-        
-        
         if (isLockedOn)
         { 
             Quaternion rotation = Quaternion.LookRotation
               (Player.position - transform.position, transform.TransformDirection(Vector3.up));
             transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            if (!Rocket) 
-            { 
-                Debug.Log("Problom");
+            if (!Rocket)
+            {
+                isShooting = false;
+                Speed = 1;
                 Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
-                
+                timer = 0;
+                RocketFire = Rocket.GetComponent<RocketHit>();
             }
-            Rocket.transform.Translate(0.4f, 0, 0, Space.Self);
+            else { RocketFire.FlyRocket(); isShooting = true; }
         }
+        if (isShooting)
+        { timer += Time.deltaTime; if (timer > 2f) { Destroy(Rocket); isShooting = false; } }
 
 
     }
-
-    public void FireRocket()
-    {
-        {
-            Debug.Log("Fire");
-            
-              
+       public void NutrlizeSpeed()
+       {
+        Speed = 0;
         }
             
-            
-        
-        
     }
-
-}
