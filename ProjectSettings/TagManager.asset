@@ -8,6 +8,7 @@ TagManager:
   - PlayerMain
   - Sticky
   - rail
+  - player
   layers:
   - Default
   - TransparentFX

@@ -10,37 +10,35 @@ public class MineAnimationsManager : MonoBehaviour
     [SerializeField] GameObject MineBase;
     [SerializeField] SpriteRenderer MineLamp;
     [SerializeField] GameObject ExplosionSource;
-    private bool isArmed = false;
-   
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void ExitWarningRange()
     {
-        if (collision.gameObject.tag == "player" && isArmed == false )
-        {  TriggerWarning();  }
-        else if (isArmed = true && collision.gameObject.tag == "player")
-        { TriggerExplosion();  }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "player")
-        { TriggerWarning();  }
+        anim.SetBool("IsWarning", false);
     }
 
     public void TriggerWarning()
     {
-        isArmed = !isArmed;
-        anim.SetBool("IsWarning", isArmed);
+
+        anim.SetBool("IsWarning", true);
     }
 
-    public void TriggerExplosion()
+    public void TriggerExplosion(Blob player)
     {
-        if(isArmed){
-            anim.SetTrigger("IsBoom");
-        }    
+
+        anim.SetTrigger("IsBoom");
+        StartCoroutine(DelayedBoom(player));
+    }
+    IEnumerator DelayedBoom(Blob player)
+    {
+        yield return new WaitForSeconds(2.5f);
+        player.TrigThis();
+        Boom();
     }
 
     
-    public void Boom(){
+    public void Boom()
+    {
         ExplosionCollider.enabled = true;
         MineBase.SetActive(false);
         MineLamp.enabled = false;
