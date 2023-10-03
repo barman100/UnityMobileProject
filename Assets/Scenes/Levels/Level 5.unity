@@ -269,12 +269,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6093525565296702203, guid: c0a346862bf6fbe42803fd285b93827f, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -321,8 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 39166630}
-  Strength: 100
-  MaxLength: 2
+  Strength: 350
+  MaxLength: 5
   Arrow: {fileID: 236336505}
   ArrowSprite: {fileID: 1432912121}
   Target: {fileID: 827027985}
