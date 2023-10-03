@@ -9,24 +9,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -177.53333
+      value: 0.0031648874
       objectReference: {fileID: 0}
     - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.302938
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60,58 +48,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 76449869740082444, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 172639736997784004, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
       propertyPath: m_Name
       value: New Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 7840769363998414591, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 758541881706654066, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58048034
+      objectReference: {fileID: 0}
+    - target: {fileID: 758541881706654066, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.10177231
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 172639736997784004, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6064868201491854995}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
---- !u!1 &2937954372915666037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 172639736997784004, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-  m_PrefabInstance: {fileID: 3071704546786882993}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6064868201491854995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2937954372915666037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28781121d789df749961c5d1e2106be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RocketBlowUp: {fileID: 4327903510305746385}
-  RocketBody: {fileID: 6510695620220798790}
-  Trail: {fileID: 6881531174382817555}
---- !u!198 &4327903510305746385 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1634576099211974752, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-  m_PrefabInstance: {fileID: 3071704546786882993}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6510695620220798790 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8140889822838190839, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-  m_PrefabInstance: {fileID: 3071704546786882993}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6881531174382817555 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8440026240801465506, guid: d5012caa7adbec34bbcb1ede1095767f, type: 3}
-  m_PrefabInstance: {fileID: 3071704546786882993}
-  m_PrefabAsset: {fileID: 0}

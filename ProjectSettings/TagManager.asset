@@ -8,6 +8,7 @@ TagManager:
   - PlayerMain
   - Sticky
   - rail
+  - DetachOne
   - player
   layers:
   - Default
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - rails
   - box
-  - 
+  - Rocket
   - 
   - 
   - 
