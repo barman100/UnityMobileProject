@@ -4952,6 +4952,7 @@ MonoBehaviour:
   RocketBody: {fileID: 9118788091299875679}
   Trail: {fileID: 7057657493787017523}
   turretDetRef: {fileID: 0}
+  _explosion: {fileID: 8983079394675734629}
   isFlying: 0
 --- !u!1 &2019717865831694925
 GameObject:
@@ -9850,7 +9851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132785800418905531}
   - component: {fileID: 8983079394675734629}
-  - component: {fileID: 9065887558968702924}
+  - component: {fileID: 3750745804220153855}
   m_Layer: 0
   m_Name: 'Explosion '
   m_TagString: Untagged
@@ -9904,23 +9905,31 @@ CircleCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
---- !u!114 &9065887558968702924
-MonoBehaviour:
+  m_Radius: 15
+--- !u!250 &3750745804220153855
+PointEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4720633831913019173}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbbd44e14493494786f833d8159fdf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceMagnitude: 10000
+  m_ForceVariation: 0
+  m_DistanceScale: 1
+  m_ForceSource: 0
+  m_ForceTarget: 0
+  m_ForceMode: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &4766666126324332995
 GameObject:
   m_ObjectHideFlags: 0

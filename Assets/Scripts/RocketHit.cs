@@ -10,16 +10,22 @@ public class RocketHit : MonoBehaviour
     [SerializeField] SpriteRenderer RocketBody;
     [SerializeField] ParticleSystem Trail;
     [SerializeField] public TurretDetect turretDetRef;
+    [SerializeField] private Collider2D _explosion;
+       
 
     private bool RocketDestroyed = false;
     public bool isFlying = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerMain" || collision.gameObject.tag == "Sticky")
+        if (collision.gameObject.tag == "player" || collision.gameObject.tag == "Sticky")
         {
             RocketDestroyed = true;
             isFlying = false;
             RocketBlowUp.Play();
+            collision.gameObject.TryGetComponent(out Blob playerBlob);
+            if (playerBlob != null)
+                playerBlob.TrigThis();
+            _explosion.enabled = true;
             RocketBody.enabled = false;
             Trail.enableEmission = false;
             Destroy(transform.parent.gameObject, 1f);
@@ -41,6 +47,6 @@ public class RocketHit : MonoBehaviour
     {
         isFlying = true;
         Trail.Play();
-        Destroy(transform.parent,20f);
+
     }
 }

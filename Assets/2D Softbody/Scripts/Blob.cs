@@ -9,7 +9,7 @@ public class Blob : MonoBehaviour
         GameObject zPlayer;
         private void Start()
         {
-            zPlayer = GameObject.FindGameObjectWithTag("PlayerMain");
+            zPlayer = GameObject.FindGameObjectWithTag("player");
         }
 
         void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +35,7 @@ public class Blob : MonoBehaviour
             }
         }
     }
-
+    AudioClip sss;
     public int width = 5;
     public int height = 5;
     public int referencePointsCount = 12;
@@ -73,7 +73,7 @@ public class Blob : MonoBehaviour
         for (int i = 0; i < referencePointsCount; i++)
         {
             referencePoints[i] = new GameObject();
-            referencePoints[i].tag = gameObject.tag;
+            //referencePoints[i].tag = gameObject.tag;
             referencePoints[i].AddComponent<PropagateCollisions>();
             referencePoints[i].transform.parent = transform;
 

@@ -24,20 +24,19 @@ public class TurretDetect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerMain")
+        if (collision.gameObject.tag == "player")
         { isLockedOn = true; }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerMain")
+        if (collision.gameObject.tag == "player")
         { isLockedOn = false; }
     }
 
     private void Start()
     {
-        Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
+        Rocket = Instantiate(RocketReserved, transform.position, transform.rotation, transform);
         RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
-        Rocket.transform.parent = transform;
         isFired = false;
         Rocket.transform.localPosition = new Vector3(3, 0, 1);
     }
@@ -55,13 +54,12 @@ public class TurretDetect : MonoBehaviour
                 if (FireTimer > FireDelay)
                 {
                     Debug.Log("Fired");
-                    Rocket.transform.parent = transform.parent;
+                    Rocket.transform.parent = null;
                     ReloadTimer = 0;
                     isFired = true;
                     RocketFire.IgniteThrusters();
-                    Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
+                    Rocket = Instantiate(RocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
                     RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
-                    Rocket.transform.parent = transform;
                     Rocket.transform.localPosition = new Vector3(0, 0, 1);
                 }
                 else
