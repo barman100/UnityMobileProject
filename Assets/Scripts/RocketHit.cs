@@ -12,7 +12,7 @@ public class RocketHit : MonoBehaviour
     [SerializeField] public TurretDetect turretDetRef;
 
     private bool RocketDestroyed = false;
-    private bool isFlying;
+    public bool isFlying = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "PlayerMain" || collision.gameObject.tag == "Sticky")
@@ -22,22 +22,25 @@ public class RocketHit : MonoBehaviour
             RocketBlowUp.Play();
             RocketBody.enabled = false;
             Trail.enableEmission = false;
-            Destroy(gameObject, 1f);
+            Destroy(transform.parent.gameObject, 1f);
         }
     }
 
     void Update()
     {
         if (isFlying)
-        { FlyRocket(); }
-    }
-    public void FlyRocket()
-    {
-        isFlying = true;
-        if (!RocketDestroyed)
         {
-            this.gameObject.transform.Translate(0.4f * Speed * Time.deltaTime, 0, 0, Space.Self);
+            if (!RocketDestroyed)
+            {
+                transform.parent.transform.position += transform.right * Speed * Time.deltaTime;
+            }
         }
     }
-      
+
+    public void IgniteThrusters()
+    {
+        isFlying = true;
+        Trail.Play();
+        Destroy(transform.parent,20f);
+    }
 }

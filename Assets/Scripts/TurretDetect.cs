@@ -12,11 +12,12 @@ public class TurretDetect : MonoBehaviour
     [SerializeField] Transform Player;
     [SerializeField] GameObject Rocket;
     [SerializeField] public RocketHit RocketFire;
+    [SerializeField] float FireDelay = 3;
+    [SerializeField] public float ReloadDelay = 3;
 
-
-    private float Speed = 1;
-    private bool isShooting = false;
-    private float timer = 0;
+    private float ReloadTimer = 0;
+    private float FireTimer = 0;
+    private bool isFired = false;
     public bool isLockedOn = false;
     public bool isGunLoaded = true;
 
@@ -30,7 +31,18 @@ public class TurretDetect : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerMain")
         { isLockedOn = false; }
-    } 
+    }
+
+    private void Start()
+    {
+        Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
+        RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
+        Rocket.transform.parent = transform;
+        isFired = false;
+        Rocket.transform.localPosition = new Vector3(3, 0, 1);
+    }
+
+
     void Update()
     {
         if (isLockedOn)
@@ -38,24 +50,48 @@ public class TurretDetect : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation
               (Player.position - transform.position, transform.TransformDirection(Vector3.up));
             transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            if (!Rocket)
+            if (isFired == false)
             {
-                isShooting = false;
-                Speed = 1;
-                Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
-                timer = 0;
-                RocketFire = Rocket.GetComponent<RocketHit>();
+                if (FireTimer > FireDelay)
+                {
+                    Debug.Log("Fired");
+                    Rocket.transform.parent = transform.parent;
+                    ReloadTimer = 0;
+                    isFired = true;
+                    RocketFire.IgniteThrusters();
+                    Rocket = Instantiate(RocketReserved, transform.position, transform.rotation);
+                    RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
+                    Rocket.transform.parent = transform;
+                    Rocket.transform.localPosition = new Vector3(0, 0, 1);
+                }
+                else
+                {
+                    FireTimer += Time.deltaTime;
+                    Debug.Log("Aiming");
+                }
             }
-            else { RocketFire.FlyRocket(); isShooting = true; }
         }
-        if (isShooting)
-        { timer += Time.deltaTime; if (timer > 2f) { Destroy(Rocket); isShooting = false; } }
+        else
+        {
+            FireTimer = 0;
+        }
+        if (isFired && ReloadTimer > ReloadDelay)
+        {
+            Debug.Log("Reloading Finished");
+            FireTimer = 0;
+            isFired = false;
+            
+            Rocket.transform.localPosition = new Vector3(3,0,1);
+        }
+        else if (isFired)
+        {
+            Debug.Log("Reloading");
+            ReloadTimer += Time.deltaTime;
+        }
+
 
 
     }
-       public void NutrlizeSpeed()
-       {
-        Speed = 0;
-        }
+       
             
     }
