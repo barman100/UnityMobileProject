@@ -16,14 +16,14 @@ public class MineAnimationsManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player" && isArmed == false )
-        {  TriggerWarning(); Debug.Log("First Collide"); }
+        {  TriggerWarning();  }
         else if (isArmed = true && collision.gameObject.tag == "player")
-        { TriggerExplosion(); Debug.Log("Second collide"); }
+        { TriggerExplosion();  }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
-        { TriggerWarning(); Debug.Log("Exit Collide"); }
+        { TriggerWarning();  }
     }
 
     public void TriggerWarning()

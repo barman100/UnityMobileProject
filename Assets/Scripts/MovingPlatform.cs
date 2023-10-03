@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer Point1;
+    [SerializeField] SpriteRenderer Point2;
+
+
     public float Speed;
-    public int StartingPoint;
+    public int StartP;
     public Transform[] Points;
 
     private int i;
 
     void Start()
     {
-        transform.position = Points[StartingPoint].position;
+        Point1.enabled = false;
+        Point2.enabled = false;
+        transform.position = Points[StartP].position;
     }
     void Update()
     {

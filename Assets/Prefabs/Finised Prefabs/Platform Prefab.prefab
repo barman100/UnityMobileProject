@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2ec737048d36644a3bedcaef299446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Point1: {fileID: 6480564806011401655}
+  Point2: {fileID: 4530687087342235686}
   Speed: 50
   StartingPoint: 0
   Points:
