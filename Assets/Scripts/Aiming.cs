@@ -12,7 +12,9 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
     [SerializeField] SpriteRenderer ArrowSprite;
     [SerializeField] GameObject Target;
     [SerializeField] Blob player;
-    
+
+    [SerializeField] AudioClip JumpSound;
+    [SerializeField] AudioSource PlayerSound;
 
     public static GameObject DraggedInstance;
 
@@ -30,6 +32,7 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        
         Debug.Log("OnPointerDown");
         Target.SetActive(true);
         Debug.Log(ArrowSprite.color);
@@ -79,12 +82,15 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
         Target.SetActive(false);
         Arrow.SetActive(false);
         player.TrigThis();
-        
+
+        PlayerSound.clip = JumpSound;
+        PlayerSound.Play();
         RB.AddForce(new Vector2(Target.transform.position.x - RB.transform.position.x, Target.transform.position.y - RB.transform.position.y).normalized * Strength * powerRatio, ForceMode2D.Impulse);
         _offsetToMouse = Vector3.zero;
+
     }
 
     #endregion
 
-   
+
 }
