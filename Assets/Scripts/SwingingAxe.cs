@@ -13,7 +13,7 @@ public class SwingingAxe : MonoBehaviour
         if (collision.gameObject.tag == "player")
         {
             HitEvent?.Invoke();
-            Debug.Log("Player Been Hit");
+            
         }
     }
 
