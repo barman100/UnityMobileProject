@@ -11,6 +11,8 @@ public class Impailed : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
+            GameManager.PlayerDied = true;
+
             Debug.Log("player dead");
         }
     }
