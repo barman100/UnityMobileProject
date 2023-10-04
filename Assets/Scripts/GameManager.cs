@@ -6,6 +6,7 @@ public class GameManager: MonoBehaviour
     [SerializeField] private TextMeshProUGUI _jumps;
     [SerializeField] private TextMeshProUGUI _time;
     [SerializeField] private TextMeshProUGUI _diamonds;
+    [SerializeField] GameObject LevelCompletedGO;
     [SerializeField] LevelDataManager _dataManager;
     private const string JUMPS_PREFIX = "Jumps: ";
     private const string TIME_PREFIX = "Time: ";
@@ -17,6 +18,7 @@ public class GameManager: MonoBehaviour
 
      void Start()
     {
+
         Jumps = 0;
         Diamonds = 0;
         LevelTime = 0;
@@ -37,10 +39,7 @@ public class GameManager: MonoBehaviour
         if (LevelEnded)
         {
             UpdateData();
-            if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex + 1)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            else
-                SceneManager.LoadScene("Main Menu");
+            LevelCompletedGO.SetActive(true);
         }
     }
 
