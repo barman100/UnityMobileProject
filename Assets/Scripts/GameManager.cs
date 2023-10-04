@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-public class GameManager: MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _jumps;
     [SerializeField] private TextMeshProUGUI _time;
@@ -11,7 +11,6 @@ public class GameManager: MonoBehaviour
     [SerializeField] SpriteRenderer _PlayerRenderer;
 
     [SerializeField] GameObject LevelCompletedGO;
-    [SerializeField] LevelDataManager _dataManager;
     private const string JUMPS_PREFIX = "Jumps: ";
     private const string TIME_PREFIX = "Time: ";
     private const string DIAMONDS_PREFIX = "Diamonds: ";
@@ -45,16 +44,17 @@ public class GameManager: MonoBehaviour
         {
             UpdateData();
             LevelCompletedGO.SetActive(true);
-        if (PlayerDied)
-        {
-            _DeathSplash.Play();
-            _PlayerRenderer.enabled = false;
+            if (PlayerDied)
+            {
+                _DeathSplash.Play();
+                _PlayerRenderer.enabled = false;
+            }
         }
     }
-
-    private  void  UpdateData()
+    public void UpdateData()
     {
         var sceneName = SceneManager.GetActiveScene().name;
-        _dataManager.UpdateLevelData(sceneName, Jumps, (int)LevelTime , Diamonds);
+        _dataManager.UpdateLevelData(sceneName, Jumps, (int)LevelTime, Diamonds);
     }
 }
+
