@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level Data 4
   m_EditorClassIdentifier: 
   SceneLevelName: Level 4
+  LevelID: 4
   Jumps: 0
   Time: 0
   Diamonds: 0
