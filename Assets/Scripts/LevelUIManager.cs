@@ -31,7 +31,7 @@ public class LevelUIManager : MonoBehaviour
         PauseMenu.SetActive(isPaused);
     }
 
-    public void LoadCompletedLevelScreen()
+    public void LoadCompletedLevelScreen(string levelId)
     {
         // get score calculate stars show stars
         
@@ -43,6 +43,18 @@ public class LevelUIManager : MonoBehaviour
             Stars[i].SetActive(true);
         }
         WinScreen.SetActive(true);
+        if (GameManager.Score > int.Parse(PlayerPrefs.GetString("Level"+levelId + "score")))
+        {
+            PlayerPrefs.SetString("Level" + levelId + "score",GameManager.Score.ToString());
+        }
+        if (stars > int.Parse(PlayerPrefs.GetString("Level" + levelId + "stars")))
+        {
+            PlayerPrefs.SetString("Level" + levelId + "stars", stars.ToString());
+        }
+        if (stars >= 1)
+        {
+            PlayerPrefs.SetString("Level" + (int.Parse(levelId)+1) + "unlock", "1");
+        }
     }
 
     public void LoadDeathScreen(string CauseOfDeath)

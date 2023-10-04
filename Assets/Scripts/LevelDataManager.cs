@@ -17,6 +17,18 @@ public class LevelDataManager : ScriptableObject
             levelData.Diamonds = diamonds;
         }
     }
+
+    public string getLevelID(string levelName)
+    {
+        LevelDataSO levelData = LevelsDataManager.Find(data => data.SceneLevelName == levelName);
+        if (levelData != null)
+        {
+            string ID = levelData.LevelID;
+            return ID;
+        }
+        throw new NullReferenceException(levelName + "Couldn't be found in levels");
+    }
+
     public int JumpsThresholdDelta(string levelName, int jumps)
     {
         LevelDataSO levelData = LevelsDataManager.Find(data => data.SceneLevelName == levelName);

@@ -54,7 +54,8 @@ public class GameManager : MonoBehaviour
         if (LevelEnded)
         {
             UpdateData();
-            UIManager.LoadCompletedLevelScreen();
+            var scene = SceneManager.GetActiveScene().name;
+            UIManager.LoadCompletedLevelScreen(_dataManager.getLevelID(scene));
         }
         if (PlayerDied && OneDeath == false)
         {
