@@ -98878,6 +98878,11 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3403937286808750974, guid: 573b40420222c614eade063f2987d4b6, type: 3}
   m_PrefabInstance: {fileID: 1615921405}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1615921409 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7312009091603936339, guid: 573b40420222c614eade063f2987d4b6, type: 3}
+  m_PrefabInstance: {fileID: 1615921405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1637018672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99008,6 +99013,10 @@ PrefabInstance:
       propertyPath: _diamonds
       value: 
       objectReference: {fileID: 131852416}
+    - target: {fileID: 4957614910171226180, guid: 2f766a8d1d5586442b4e0a8a06a03412, type: 3}
+      propertyPath: _playerRB
+      value: 
+      objectReference: {fileID: 1615921409}
     - target: {fileID: 4957614910171226180, guid: 2f766a8d1d5586442b4e0a8a06a03412, type: 3}
       propertyPath: _deathSplash
       value: 
