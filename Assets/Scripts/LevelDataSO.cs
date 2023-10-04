@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelDataSO : ScriptableObject
 {
     public string SceneLevelName;
+    public string LevelID;
     public int Jumps;
     public int Time;
     public int Diamonds;

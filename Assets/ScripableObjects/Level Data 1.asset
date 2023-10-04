@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Level Data 1
   m_EditorClassIdentifier: 
   SceneLevelName: Level 1
-  Jumps: 0
+  LevelID: 1
+  Jumps: 8
   Time: 0
-  Diamonds: 0
+  Diamonds: 2
   JumpThreshhold: 10
   TimeThreshhold: 45
   MaxDiamonds: 3

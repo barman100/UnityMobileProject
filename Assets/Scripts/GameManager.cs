@@ -6,19 +6,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _jumps;
     [SerializeField] private TextMeshProUGUI _time;
     [SerializeField] private TextMeshProUGUI _diamonds;
-    [SerializeField] private LevelDataManager _dataManager;
-    [SerializeField] private ParticleSystem _deathSplash;
-    [SerializeField] private MeshRenderer _playerRenderer;
-    [SerializeField] private Rigidbody2D _playerRB;
-    [SerializeField] private LevelUIManager _uiManager;
+    [SerializeField] LevelDataManager _dataManager;
+    [SerializeField] ParticleSystem _deathSplash;
+    [SerializeField] MeshRenderer _playerRenderer;
+    [SerializeField] Rigidbody2D _playerRB;
 
+    [SerializeField] LevelUIManager UIManager;
     private const string JUMPS_PREFIX = "Jumps: ";
     private const string TIME_PREFIX = "Time: ";
     private const string DIAMONDS_PREFIX = "Diamonds: ";
     private const int JUMP_SCORE_MODIFIER = -100;
     private const int Time_SCORE_MODIFIER = -20;
     private const int DIAMOND_SCORE_MODIFIER = 1000;
-    private bool _oneDeath = false;
     public static int Jumps { get; set; }
     public static int Diamonds { get; set; }
     public static int LevelTime { get; set; }
@@ -28,67 +27,47 @@ public class GameManager : MonoBehaviour
 
     public string CauseOfDeath { get; set; }  
 
-
-    private bool isActive = true;
-
-    private void OnApplicationFocus(bool focus)
-    {
-        isActive = focus;
-    }
+    private bool OneDeath = false;
 
     void Start()
     {
-        InitializeValues();
-    }
-
-    private void InitializeValues()
-    {
+        _deathSplash.gameObject.SetActive(false);
+        PlayerDied = false;
         Jumps = 0;
         Diamonds = 0;
         LevelTime = 0;
-        PlayerDied = false;
         LevelEnded = false;
+        CauseOfDeath = "Explodified";
+
         _time.text = TIME_PREFIX + 0;
         _diamonds.text = DIAMONDS_PREFIX + Diamonds;
         _jumps.text = JUMPS_PREFIX + Jumps;
-        _deathSplash.gameObject.SetActive(false);
-        CauseOfDeath = "Explodified";
-    }
 
+    }
     private void Update()
-    {
-        UpdateText();
-
-        if (LevelEnded)
-        {
-            UpdateData();
-            _uiManager.LoadCompletedLevelScreen();
-        }
-        if (PlayerDied && _oneDeath == false)
-        {
-            PlayerIsKilled();
-
-        }
-    }
-
-    private void PlayerIsKilled()
-    {
-        _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
-        _oneDeath = true;
-        _playerRenderer.enabled = false;
-        _deathSplash.gameObject.SetActive(true);
-        _deathSplash.Play();
-        _uiManager.LoadDeathScreen(CauseOfDeath);
-    }
-
-    private void UpdateText()
     {
         LevelTime += (int)Time.deltaTime;
         _time.text = TIME_PREFIX + LevelTime;
         _diamonds.text = DIAMONDS_PREFIX + Diamonds;
         _jumps.text = JUMPS_PREFIX + Jumps;
-    }
 
+        if (LevelEnded)
+        {
+            UpdateData();
+            var scene = SceneManager.GetActiveScene().name;
+            UIManager.LoadCompletedLevelScreen(_dataManager.getLevelID(scene));
+        }
+        if (PlayerDied && OneDeath == false)
+        {
+            _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            OneDeath = true;
+            _playerRenderer.enabled = false;
+            _deathSplash.gameObject.SetActive(true);
+            _deathSplash.Play();
+            UIManager.LoadDeathScreen(CauseOfDeath);
+
+        }
+    }
     public void UpdateData()
     {
         var sceneName = SceneManager.GetActiveScene().name;
