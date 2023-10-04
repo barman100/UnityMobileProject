@@ -6,6 +6,10 @@ public class GameManager: MonoBehaviour
     [SerializeField] private TextMeshProUGUI _jumps;
     [SerializeField] private TextMeshProUGUI _time;
     [SerializeField] private TextMeshProUGUI _diamonds;
+    [SerializeField] LevelDataManager _dataManager;
+    [SerializeField] ParticleSystem _DeathSplash;
+    [SerializeField] SpriteRenderer _PlayerRenderer;
+
     [SerializeField] GameObject LevelCompletedGO;
     [SerializeField] LevelDataManager _dataManager;
     private const string JUMPS_PREFIX = "Jumps: ";
@@ -15,10 +19,11 @@ public class GameManager: MonoBehaviour
     public static int Diamonds { get; set; }
     public static float LevelTime { get; set; }
     public static bool LevelEnded { get; set; }
+    public static bool PlayerDied { get; set; }
 
-     void Start()
+    void Start()
     {
-
+        PlayerDied = false;
         Jumps = 0;
         Diamonds = 0;
         LevelTime = 0;
@@ -40,6 +45,10 @@ public class GameManager: MonoBehaviour
         {
             UpdateData();
             LevelCompletedGO.SetActive(true);
+        if (PlayerDied)
+        {
+            _DeathSplash.Play();
+            _PlayerRenderer.enabled = false;
         }
     }
 
