@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4724089788728203067}
   - component: {fileID: 5449900204010296705}
-  - component: {fileID: 8762671297752412044}
   - component: {fileID: 3586902108295426614}
   m_Layer: 0
   m_Name: None Stickble Surface
@@ -86,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8762671297752412044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6877075376423815346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a629c1f79a054044b62bb8856717c46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3586902108295426614
 BoxCollider2D:
   m_ObjectHideFlags: 0

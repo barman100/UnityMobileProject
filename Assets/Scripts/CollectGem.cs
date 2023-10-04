@@ -14,7 +14,7 @@ public class CollectGem : MonoBehaviour
     {
         if (!NotDestroyed && collision.gameObject.tag == "player")
         {
-            LevelStatsTracker.Diamonds++;
+            GameManager.Diamonds++;
             _partical.Play();
             _diamondChild.SetActive(false);
             Destroy(this.gameObject, 1f);

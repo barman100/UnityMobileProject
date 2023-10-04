@@ -77,7 +77,7 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
     {
         
         Debug.Log("OnEndDrag");
-        LevelStatsTracker.Jumps++;
+        GameManager.Jumps++;
         DraggedInstance = null;
         Target.SetActive(false);
         Arrow.SetActive(false);

@@ -12,9 +12,6 @@ public class LevelUIManager : MonoBehaviour
     
     bool isPaused = false;
 
-    [SerializeField] string LevelName;
-    [SerializeField] string NextLevelName;
-
     public void TogglePause()
     {
         isPaused = !isPaused;
