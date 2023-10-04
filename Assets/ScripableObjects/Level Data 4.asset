@@ -16,3 +16,9 @@ MonoBehaviour:
   Jumps: 0
   Time: 0
   Diamonds: 0
+  JumpThreshhold: 15
+  TimeThreshhold: 60
+  MaxDiamonds: 4
+  OneStars: 1500
+  TwoStars: 2700
+  ThreeStar: 3700

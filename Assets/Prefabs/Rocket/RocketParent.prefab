@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 132785800418905531}
   - component: {fileID: 8983079394675734629}
   - component: {fileID: 3750745804220153855}
-  - component: {fileID: 8770098908018256615}
+  - component: {fileID: 8548753200938577579}
   m_Layer: 0
   m_Name: 'Explosion '
   m_TagString: Untagged
@@ -9931,7 +9931,7 @@ PointEffector2D:
   m_ForceMode: 0
   m_Drag: 0
   m_AngularDrag: 0
---- !u!114 &8770098908018256615
+--- !u!114 &8548753200938577579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9940,7 +9940,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4720633831913019173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ad15827f6e2e74ba9ee09d6fd9b7b5, type: 3}
+  m_Script: {fileID: 11500000, guid: f99936d2ab90d5d4dab1aac676ddbc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4766666126324332995

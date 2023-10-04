@@ -824,10 +824,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WinScreen: {fileID: 5912021669957820707}
+  Score: {fileID: 2717150450994252316}
+  Stars:
+  - {fileID: 919741777793585352}
+  - {fileID: 2319612449424016175}
+  - {fileID: 3097679139173818404}
   DeathScreen: {fileID: 2766156036026760295}
   PauseMenu: {fileID: 4758086754628519734}
-  LevelName: Level 1
-  NextLevelName: Level 1
+  GameManager: {fileID: 0}
 --- !u!1 &2202765919072643515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,6 +3699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Star (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3780,6 +3788,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+--- !u!1 &3097679139173818404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+  m_PrefabInstance: {fileID: 437188781445325122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8488799099253992107 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
@@ -3796,6 +3809,10 @@ PrefabInstance:
     - target: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
       propertyPath: m_Name
       value: Star (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
       propertyPath: m_Pivot.x
@@ -3882,6 +3899,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+--- !u!1 &2319612449424016175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+  m_PrefabInstance: {fileID: 926885111310074441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9152304236524554656 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
@@ -3898,6 +3920,10 @@ PrefabInstance:
     - target: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
       propertyPath: m_Name
       value: Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
       propertyPath: m_Pivot.x
@@ -3984,6 +4010,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+--- !u!1 &919741777793585352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3236995366490620262, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}
+  m_PrefabInstance: {fileID: 2319224498193912238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6048610603132410439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8349516681942731753, guid: 66e64e73a41f58d4bae8ff807d4e76cb, type: 3}

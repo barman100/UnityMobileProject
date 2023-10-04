@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 3477793857855097161}
   - component: {fileID: 3350572744580181375}
   - component: {fileID: 6445402407474269711}
+  - component: {fileID: 7423337596706166650}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -180,6 +181,18 @@ PointEffector2D:
   m_ForceMode: 0
   m_Drag: 0
   m_AngularDrag: 0
+--- !u!114 &7423337596706166650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940897164049666955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99936d2ab90d5d4dab1aac676ddbc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4001632185691881796
 GameObject:
   m_ObjectHideFlags: 0

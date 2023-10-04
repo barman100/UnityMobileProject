@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelUIManager : MonoBehaviour
 {
 
     [SerializeField] GameObject WinScreen;
+    [SerializeField] TextMeshProUGUI Score;
+    private const string SCORE_PREFIX = "Score: \n";
+    [SerializeField] GameObject[] Stars;
     [SerializeField] GameObject DeathScreen;
     [SerializeField] GameObject PauseMenu;
-    
+    [SerializeField] GameManager GameManager;
+
     bool isPaused = false;
 
+    void Start()
+    {
+        foreach (var item in Stars)
+        {
+            item.SetActive(false);
+        }
+    }
     public void TogglePause()
     {
         isPaused = !isPaused;
@@ -26,29 +38,35 @@ public class LevelUIManager : MonoBehaviour
 
     public void LoadCompletedLevelScreen()
     {
+        // get score calculate stars show stars
+        
+        
+        int stars = GameManager.CalculateStars();
+        Score.text = SCORE_PREFIX + GameManager.Score;
+        for (int i = 0; i < stars; i++)
+        {
+            Stars[i].SetActive(true);
+        }
         WinScreen.SetActive(true);
     }
 
     public void LoadDeathScreen()
     {
-        DeathScreen.SetActive(true);    
+        DeathScreen.SetActive(true);
     }
 
     public void GoToMainMenu()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
 
     public void RestartLevel()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevel()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
