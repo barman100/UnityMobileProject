@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -75333,6 +75333,10 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1416638275}
+    - target: {fileID: 2014974999805565376, guid: 394a99b263407c242858604c12158321, type: 3}
+      propertyPath: DeathMessage
+      value: 
+      objectReference: {fileID: 2094662072}
     - target: {fileID: 5733975953569147363, guid: 394a99b263407c242858604c12158321, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.378239
@@ -75397,6 +75401,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e33d2bd889a951149ad68240c3c0d104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2094662072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2894673212918294186, guid: 394a99b263407c242858604c12158321, type: 3}
+  m_PrefabInstance: {fileID: 2094662068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

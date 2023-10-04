@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,6 +229,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7071994990863685513, guid: 58f0900ed287ae343b2d9f30b0b0c470, type: 3}
   m_PrefabInstance: {fileID: 340207701}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &369784748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2894673212918294186, guid: 394a99b263407c242858604c12158321, type: 3}
+  m_PrefabInstance: {fileID: 4609894734367718963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453140582
 GameObject:
   m_ObjectHideFlags: 0
@@ -29808,6 +29819,10 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 2141075505}
+    - target: {fileID: 2014974999805565376, guid: 394a99b263407c242858604c12158321, type: 3}
+      propertyPath: DeathMessage
+      value: 
+      objectReference: {fileID: 369784748}
     - target: {fileID: 2014974999805565376, guid: 394a99b263407c242858604c12158321, type: 3}
       propertyPath: Stars.Array.size
       value: 3

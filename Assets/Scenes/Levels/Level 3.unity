@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.36
@@ -638,6 +642,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035795}
     m_Modifications:
+    - target: {fileID: 30992944420265344, guid: fd823b7d24c030a4db0201264aa76e47, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 927446708786288034, guid: fd823b7d24c030a4db0201264aa76e47, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 19.412197
@@ -720,6 +728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.18
@@ -1103,6 +1115,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.359759
@@ -1173,6 +1189,10 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 735157588}
+    - target: {fileID: 2014974999805565376, guid: 394a99b263407c242858604c12158321, type: 3}
+      propertyPath: DeathMessage
+      value: 
+      objectReference: {fileID: 2037204068}
     - target: {fileID: 5733975953569147363, guid: 394a99b263407c242858604c12158321, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.378239
@@ -1280,6 +1300,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -95303,6 +95327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.878
@@ -95578,6 +95606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 738035798}
     m_Modifications:
+    - target: {fileID: 3388955203565708053, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 735157588}
     - target: {fileID: 7193520809865480198, guid: 541dec6a4c6aab04d9e68e8cf4c835b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.52
@@ -95709,6 +95741,17 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7312009091603936339, guid: 573b40420222c614eade063f2987d4b6, type: 3}
   m_PrefabInstance: {fileID: 1981482282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037204068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2894673212918294186, guid: 394a99b263407c242858604c12158321, type: 3}
+  m_PrefabInstance: {fileID: 1348769045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044483014
 GameObject:
   m_ObjectHideFlags: 0
