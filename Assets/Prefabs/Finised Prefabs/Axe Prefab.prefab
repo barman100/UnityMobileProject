@@ -132,7 +132,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -6}
-  m_ConnectedAnchor: {x: -2.5000002, y: 21.32}
+  m_ConnectedAnchor: {x: -0.0000002360416, y: 2.7000012}
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: -100
@@ -367,3 +367,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a963ae25b9df9478d3dd1ec22b6da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CauseOfDeath: Sliced
+  gameManager: {fileID: 0}

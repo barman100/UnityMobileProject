@@ -9,6 +9,7 @@ public class LevelUIManager : MonoBehaviour
 
     [SerializeField] GameObject WinScreen;
     [SerializeField] TextMeshProUGUI Score;
+    [SerializeField] TextMeshProUGUI DeathMessage;
     private const string SCORE_PREFIX = "Score: \n";
     [SerializeField] GameObject[] Stars;
     [SerializeField] GameObject DeathScreen;
@@ -44,8 +45,9 @@ public class LevelUIManager : MonoBehaviour
         WinScreen.SetActive(true);
     }
 
-    public void LoadDeathScreen()
+    public void LoadDeathScreen(string CauseOfDeath)
     {
+        DeathMessage.text = "You have been \n" + CauseOfDeath;
         DeathScreen.SetActive(true);
     }
 
