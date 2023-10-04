@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] LevelDataManager _dataManager;
     [SerializeField] ParticleSystem _deathSplash;
     [SerializeField] MeshRenderer _playerRenderer;
+    [SerializeField] Rigidbody2D _playerRB;
 
     [SerializeField] LevelUIManager UIManager;
     private const string JUMPS_PREFIX = "Jumps: ";
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public static bool LevelEnded { get; set; }
     public static bool PlayerDied { get; set; }
     public  int Score { get; private set; }
+
+    private bool OneDeath = false;
 
     void Start()
     {
@@ -50,8 +53,10 @@ public class GameManager : MonoBehaviour
             UpdateData();
             UIManager.LoadCompletedLevelScreen();
         }
-        if (PlayerDied)
+        if (PlayerDied && OneDeath == false)
         {
+            _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            OneDeath = true;
             _playerRenderer.enabled = false;
             _deathSplash.gameObject.SetActive(true);
             _deathSplash.Play();

@@ -48,3 +48,7 @@ MonoBehaviour:
   _time: {fileID: 0}
   _diamonds: {fileID: 0}
   _dataManager: {fileID: 11400000, guid: 9618228febbecec4792f4925ede9bffe, type: 2}
+  _deathSplash: {fileID: 0}
+  _playerRenderer: {fileID: 0}
+  _playerRB: {fileID: 7312009091603936339, guid: 573b40420222c614eade063f2987d4b6, type: 3}
+  UIManager: {fileID: 0}
