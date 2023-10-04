@@ -43,18 +43,19 @@ public class LevelUIManager : MonoBehaviour
             Stars[i].SetActive(true);
         }
         WinScreen.SetActive(true);
-        if (GameManager.Score > PlayerPrefs.GetInt("Level"+levelId + "score"))
+        if (GameManager.Score > PlayerPrefs.GetInt("level"+levelId + "score"))
         {
-            PlayerPrefs.SetInt("Level" + levelId + "score",GameManager.Score);
+            PlayerPrefs.SetInt("level" + levelId + "score",GameManager.Score);
         }
-        if (stars > PlayerPrefs.GetInt("Level" + levelId + "stars"))
+        if (stars > PlayerPrefs.GetInt("level" + levelId + "stars"))
         {
-            PlayerPrefs.SetInt("Level" + levelId + "stars", stars);
+            PlayerPrefs.SetInt("level" + levelId + "stars", stars);
         }
         if (stars >= 1)
         {
-            PlayerPrefs.SetInt("Level" + (int.Parse(levelId)+1) + "unlock", 1);
+            PlayerPrefs.SetInt("level" + (int.Parse(levelId)+1) + "unlock", 1);
         }
+        PlayerPrefs.Save();
     }
 
     public void LoadDeathScreen(string CauseOfDeath)
