@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ExitLevel : MonoBehaviour
 {
-    [SerializeField] int Level = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Level++;
-        SceneManager.LoadScene(Level);
+        if(collision.gameObject.tag == "player")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

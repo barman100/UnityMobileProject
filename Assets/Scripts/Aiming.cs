@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -78,6 +77,7 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
     {
         
         Debug.Log("OnEndDrag");
+        LevelStatsTracker.Jumps++;
         DraggedInstance = null;
         Target.SetActive(false);
         Arrow.SetActive(false);
@@ -86,6 +86,7 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
         PlayerSound.clip = JumpSound;
         PlayerSound.Play();
         RB.AddForce(new Vector2(Target.transform.position.x - RB.transform.position.x, Target.transform.position.y - RB.transform.position.y).normalized * Strength * powerRatio, ForceMode2D.Impulse);
+        player.TrigThis();
         _offsetToMouse = Vector3.zero;
 
     }

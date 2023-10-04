@@ -18,6 +18,12 @@ public class LevelUIManager : MonoBehaviour
     public void TogglePause()
     {
         isPaused = !isPaused;
+
+        if (isPaused)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+
         PauseMenu.SetActive(isPaused);
     }
 
@@ -38,11 +44,11 @@ public class LevelUIManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(LevelName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(NextLevelName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
