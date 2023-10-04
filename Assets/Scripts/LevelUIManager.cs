@@ -43,17 +43,17 @@ public class LevelUIManager : MonoBehaviour
             Stars[i].SetActive(true);
         }
         WinScreen.SetActive(true);
-        if (GameManager.Score > int.Parse(PlayerPrefs.GetString("Level"+levelId + "score")))
+        if (GameManager.Score > PlayerPrefs.GetInt("Level"+levelId + "score"))
         {
-            PlayerPrefs.SetString("Level" + levelId + "score",GameManager.Score.ToString());
+            PlayerPrefs.SetInt("Level" + levelId + "score",GameManager.Score);
         }
-        if (stars > int.Parse(PlayerPrefs.GetString("Level" + levelId + "stars")))
+        if (stars > PlayerPrefs.GetInt("Level" + levelId + "stars"))
         {
-            PlayerPrefs.SetString("Level" + levelId + "stars", stars.ToString());
+            PlayerPrefs.SetInt("Level" + levelId + "stars", stars);
         }
         if (stars >= 1)
         {
-            PlayerPrefs.SetString("Level" + (int.Parse(levelId)+1) + "unlock", "1");
+            PlayerPrefs.SetInt("Level" + (int.Parse(levelId)+1) + "unlock", 1);
         }
     }
 

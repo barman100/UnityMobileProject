@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,39 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject LevelSelectionCanvas;
     [SerializeField] GameObject[] LevelSelectionPanels;
     [SerializeField] Button[] LevelSelectionButtons;
+    [SerializeField] Button[] AvailableLevels;
+    [SerializeField] TextMeshProUGUI[] LevelScores;
     [SerializeField] int selectedLevelSet;
+
+    private int stars;
+
+    private void Start()
+    {
+        for (int i = 0;i<AvailableLevels.Length;i++)
+        {
+            if (!PlayerPrefs.HasKey("level" + (i + 1).ToString() + "unlock"))
+            {
+                PlayerPrefs.SetInt(("level" + (i + 1).ToString() + "unlock"),0);
+                PlayerPrefs.SetInt(("level" + (i + 1).ToString() + "score"), 0);
+                PlayerPrefs.SetInt(("level" + (i + 1).ToString() + "stars"), 0);
+            }
+            PlayerPrefs.SetInt("level1unlock", 1);
+            if (PlayerPrefs.GetInt(("level" + (i + 1).ToString() + "unlock")) == 0){
+                AvailableLevels[i].interactable = false;
+            }
+            LevelScores[i].text = PlayerPrefs.GetInt(("level" + (i + 1).ToString() + "score")).ToString();
+
+            stars = PlayerPrefs.GetInt(("level" + (i + 1).ToString() + "stars"));
+
+            for (int j = 0; j < stars; j++)
+            {
+                LevelScores[i].transform.GetChild(j).gameObject.SetActive(true);
+            }
+
+
+        }
+       
+    }
 
     //This function will start the game at your latest available level
     public void StartGame()
