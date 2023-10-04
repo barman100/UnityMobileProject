@@ -17,12 +17,15 @@ public class TurretDetect : MonoBehaviour
 
     private float ReloadTimer = 0;
     private float FireTimer = 0;
-    private Quaternion InitialRotation;
     private bool isFired = false;
     public bool isLockedOn = false;
     public bool isGunLoaded = true;
+    private bool isActive = true;
 
-
+    private void OnApplicationFocus(bool focus)
+    {
+        isActive = focus;
+    }
     public void TriggerAlarm()
     {
         isLockedOn = !isLockedOn;
@@ -35,59 +38,62 @@ public class TurretDetect : MonoBehaviour
         isFired = false;
         Rocket.transform.localPosition = new Vector3(3, 0, 1);
         
-        InitialRotation = transform.rotation;
 
     }
 
 
     void Update()
     {
-        if (isLockedOn)
-        { 
-            Quaternion rotation = Quaternion.LookRotation
-              (Player.position - transform.position, transform.TransformDirection(Vector3.up));
-            
-            
-
-            transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            if (isFired == false)
+        if (isActive)
+        {
+            if (isLockedOn)
             {
-                if (FireTimer > FireDelay)
+                Quaternion rotation = Quaternion.LookRotation
+                  (Player.position - transform.position, transform.TransformDirection(Vector3.up));
+
+
+
+                transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+                if (isFired == false)
                 {
-                    Debug.Log("Fired");
-                    Rocket.transform.parent = null;
-                    ReloadTimer = 0;
-                    isFired = true;
-                    RocketFire.IgniteThrusters();
-                    Rocket = Instantiate(RocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
-                    RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
-                    Rocket.transform.localPosition = new Vector3(0, 0, 1);
-                }
-                else
-                {
-                    FireTimer += Time.deltaTime;
-                    Debug.Log("Aiming");
+                    if (FireTimer > FireDelay)
+                    {
+                        Debug.Log("Fired");
+                        Rocket.transform.parent = null;
+                        ReloadTimer = 0;
+                        isFired = true;
+                        RocketFire.IgniteThrusters();
+                        Rocket = Instantiate(RocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
+                        RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
+                        Rocket.transform.localPosition = new Vector3(0, 0, 1);
+                    }
+                    else
+                    {
+                        FireTimer += Time.deltaTime;
+                        Debug.Log("Aiming");
+                    }
                 }
             }
-        }
-        else
-        {
-            FireTimer = 0;
-        }
-        if (isFired && ReloadTimer > ReloadDelay)
-        {
-            Debug.Log("Reloading Finished");
-            FireTimer = 0;
-            isFired = false;
-            
-            Rocket.transform.localPosition = new Vector3(3,0,1);
-        }
-        else if (isFired)
-        {
-            Debug.Log("Reloading");
-            ReloadTimer += Time.deltaTime;
-        }
+            else
+            {
+                FireTimer = 0;
+            }
+            if (isFired && ReloadTimer > ReloadDelay)
+            {
+                Debug.Log("Reloading Finished");
+                FireTimer = 0;
+                isFired = false;
 
+                Rocket.transform.localPosition = new Vector3(3, 0, 1);
+            }
+            else if (isFired)
+            {
+                Debug.Log("Reloading");
+                ReloadTimer += Time.deltaTime;
+            }
+
+
+        }
 
 
     }

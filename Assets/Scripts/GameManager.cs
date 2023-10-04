@@ -29,8 +29,16 @@ public class GameManager : MonoBehaviour
 
     private bool OneDeath = false;
 
+    private bool isActive = true;
+
+    private void OnApplicationFocus(bool focus)
+    {
+        isActive = focus;
+    }
+
     void Start()
     {
+        
         _deathSplash.gameObject.SetActive(false);
         PlayerDied = false;
         Jumps = 0;
@@ -44,28 +52,34 @@ public class GameManager : MonoBehaviour
         _jumps.text = JUMPS_PREFIX + Jumps;
 
     }
+
+
     private void Update()
     {
-        LevelTime += (int)Time.deltaTime;
-        _time.text = TIME_PREFIX + LevelTime;
-        _diamonds.text = DIAMONDS_PREFIX + Diamonds;
-        _jumps.text = JUMPS_PREFIX + Jumps;
+        if (isActive) 
+        { 
+            LevelTime += (int)Time.deltaTime;
+            _time.text = TIME_PREFIX + LevelTime;
+            _diamonds.text = DIAMONDS_PREFIX + Diamonds;
+            _jumps.text = JUMPS_PREFIX + Jumps;
 
-        if (LevelEnded)
-        {
-            UpdateData();
-            UIManager.LoadCompletedLevelScreen();
-        }
-        if (PlayerDied && OneDeath == false)
-        {
-            _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            OneDeath = true;
-            _playerRenderer.enabled = false;
-            _deathSplash.gameObject.SetActive(true);
-            _deathSplash.Play();
-            UIManager.LoadDeathScreen(CauseOfDeath);
+            if (LevelEnded)
+            {
+                UpdateData();
+                UIManager.LoadCompletedLevelScreen();
+            }
+            if (PlayerDied && OneDeath == false)
+            {
+                _playerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+                OneDeath = true;
+                _playerRenderer.enabled = false;
+                _deathSplash.gameObject.SetActive(true);
+                _deathSplash.Play();
+                UIManager.LoadDeathScreen(CauseOfDeath);
 
+            }
         }
+        
     }
     public void UpdateData()
     {
