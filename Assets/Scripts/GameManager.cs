@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public static bool PlayerDied { get; set; }
     public  int Score { get; private set; }
 
+    public string CauseOfDeath { get; set; }  
+
     private bool OneDeath = false;
 
     void Start()
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
         Diamonds = 0;
         LevelTime = 0;
         LevelEnded = false;
+        CauseOfDeath = "Explodified";
 
         _time.text = TIME_PREFIX + 0;
         _diamonds.text = DIAMONDS_PREFIX + Diamonds;
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour
             _playerRenderer.enabled = false;
             _deathSplash.gameObject.SetActive(true);
             _deathSplash.Play();
-            UIManager.LoadDeathScreen();
+            UIManager.LoadDeathScreen(CauseOfDeath);
 
         }
     }
