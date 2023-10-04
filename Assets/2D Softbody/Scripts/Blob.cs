@@ -3,21 +3,26 @@ using System.Collections;
 
 public class Blob : MonoBehaviour
 {
+   
     private class PropagateCollisions : MonoBehaviour
     {
-
         GameObject zPlayer;
+        AudioSource Sticky;
+        AudioClip StickyClip;
         private void Start()
         {
             zPlayer = GameObject.FindGameObjectWithTag("player");
+            Sticky = zPlayer.GetComponent<AudioSource>();
+            StickyClip = Sticky.GetComponent<AudioClip>();   
         }
 
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.transform.tag == "Sticky")
             {
+                Sticky.clip = StickyClip;
+                Sticky.Play();
                 gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-
             }
 
         }
@@ -35,7 +40,6 @@ public class Blob : MonoBehaviour
             }
         }
     }
-    AudioClip sss;
     public int width = 5;
     public int height = 5;
     public int referencePointsCount = 12;
@@ -52,6 +56,7 @@ public class Blob : MonoBehaviour
     Vector2[] uv;
     Vector3[,] offsets;
     float[,] weights;
+    
 
     void Start()
     {
