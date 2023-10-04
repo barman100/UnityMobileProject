@@ -27,12 +27,6 @@ public class LevelUIManager : MonoBehaviour
     public void TogglePause()
     {
         isPaused = !isPaused;
-
-        if (isPaused)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
-
         PauseMenu.SetActive(isPaused);
     }
 
@@ -57,6 +51,7 @@ public class LevelUIManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        isPaused = false;
         SceneManager.LoadScene("Main Menu");
     }
 
