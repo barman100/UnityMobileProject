@@ -11,7 +11,7 @@ public class RocketHit : MonoBehaviour
        
     private bool _rocketDestroyed = false;
     private bool _isFlying = false;
-
+    public bool IsActive = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player" || collision.gameObject.tag == "Sticky")
@@ -33,12 +33,12 @@ public class RocketHit : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        isActive = focus;
+        IsActive = focus;
     }
 
     void Update()
     {
-        if (isFlying && isActive)
+        if (_isFlying && IsActive)
         {
             if (!_rocketDestroyed)
             {

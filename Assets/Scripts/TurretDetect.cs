@@ -33,7 +33,7 @@ public class TurretDetect : MonoBehaviour
         _rocketFire = _rocket.GetComponent<RocketRefrence>().refrence;
         _isFired = false;
         _rocket.transform.localPosition = new Vector3(3, 0, 1);
-        
+
         _initialRotation = transform.rotation;
 
     }
@@ -41,47 +41,55 @@ public class TurretDetect : MonoBehaviour
 
     void Update()
     {
-       if (isActive)
+        if (isActive)
         {
-        if (_isLockedOn)
-        { 
-            Quaternion rotation = Quaternion.LookRotation
-              (_player.position - transform.position, transform.TransformDirection(Vector3.up));
-            
-            
-
-            transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            if (_isFired == false)
+            if (_isLockedOn)
             {
-                if (_fireTimer > _fireDelay)
+                Quaternion rotation = Quaternion.LookRotation
+                  (_player.position - transform.position, transform.TransformDirection(Vector3.up));
+
+
+
+                transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+                if (_isFired == false)
                 {
-                    Debug.Log("Fired");
-                    _rocket.transform.parent = null;
-                    _reloadTimer = 0;
-                    _isFired = true;
-                    _rocketFire.IgniteThrusters();
-                    _rocket = Instantiate(_rocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
-                    _rocketFire = _rocket.transform.GetChild(1).GetComponent<RocketHit>();
-                    _rocket.transform.localPosition = new Vector3(0, 0, 1);
-                }
-                else
-                {
-                    _fireTimer += Time.deltaTime;
-                    Debug.Log("Aiming");
+                    if (_fireTimer > _fireDelay)
+                    {
+                        Debug.Log("Fired");
+                        _rocket.transform.parent = null;
+                        _reloadTimer = 0;
+                        _isFired = true;
+                        _rocketFire.IgniteThrusters();
+                        _rocket = Instantiate(_rocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
+                        _rocketFire = _rocket.transform.GetChild(1).GetComponent<RocketHit>();
+                        _rocket.transform.localPosition = new Vector3(0, 0, 1);
+                    }
+                    else
+                    {
+                        _fireTimer += Time.deltaTime;
+                        Debug.Log("Aiming");
+                    }
                 }
             }
-        }
-        else
-        {
-            _fireTimer = 0;
-        }
-        if (_isFired && _reloadTimer > _reloadDelay)
-        {
-            Debug.Log("Reloading Finished");
-            _fireTimer = 0;
-            _isFired = false;
-            
-            _rocket.transform.localPosition = new Vector3(3,0,1);
+            else
+            {
+                _fireTimer = 0;
+            }
+            if (_isFired && _reloadTimer > _reloadDelay)
+            {
+                Debug.Log("Reloading Finished");
+                _fireTimer = 0;
+                _isFired = false;
+
+                _rocket.transform.localPosition = new Vector3(3, 0, 1);
+            }
+            else if (_isFired)
+            {
+                Debug.Log("Reloading");
+                _reloadTimer += Time.deltaTime;
+            }
+
+            _rocket.transform.localPosition = new Vector3(3, 0, 1);
         }
         else if (_isFired)
         {
@@ -89,19 +97,14 @@ public class TurretDetect : MonoBehaviour
             _reloadTimer += Time.deltaTime;
         }
 
-                Rocket.transform.localPosition = new Vector3(3, 0, 1);
-            }
-            else if (isFired)
-            {
-                Debug.Log("Reloading");
-                ReloadTimer += Time.deltaTime;
-            }
-
-
-        }
-
 
     }
+    
+}
+
+
+
+   
        
             
-    }
+    
