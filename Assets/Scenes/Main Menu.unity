@@ -8357,15 +8357,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3537d63c4fd6f4487bf7c35110af3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuCanvas: {fileID: 724107563}
-  LevelSelectionCanvas: {fileID: 1654512911}
-  LevelSelectionPanels:
+  _mainMenuCanvas: {fileID: 724107563}
+  _levelSelectionCanvas: {fileID: 1654512911}
+  _levelSelectionPanels:
   - {fileID: 1260962955}
   - {fileID: 1387689299}
-  LevelSelectionButtons:
+  _levelSelectionButtons:
   - {fileID: 422353645}
   - {fileID: 1806687414}
-  selectedLevelSet: 0
+  _selectedLevelSet: 0
 --- !u!4 &1492796348
 Transform:
   m_ObjectHideFlags: 0

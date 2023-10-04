@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionTriggered : MonoBehaviour
@@ -9,12 +7,12 @@ public class ExplosionTriggered : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
-            collision.gameObject.TryGetComponent(out Blob _playerBlob);
+            collision.gameObject.TryGetComponent(out Blob playerBlob);
 
-            if(_playerBlob != null)
+            if(playerBlob != null)
             {
 
-            _animationManager.TriggerExplosion(_playerBlob); 
+            _animationManager.TriggerExplosion(playerBlob); 
             }
             
         }

@@ -4947,13 +4947,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28781121d789df749961c5d1e2106be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  RocketBlowUp: {fileID: 6795636060515012406}
-  RocketBody: {fileID: 9118788091299875679}
-  Trail: {fileID: 7057657493787017523}
-  turretDetRef: {fileID: 0}
+  _speed: 10
+  _rocketBlowUp: {fileID: 6795636060515012406}
+  _rocketBody: {fileID: 9118788091299875679}
+  _trail: {fileID: 3633878635777593771}
+  _turretDetRef: {fileID: 0}
   _explosion: {fileID: 8983079394675734629}
-  isFlying: 0
 --- !u!1 &2019717865831694925
 GameObject:
   m_ObjectHideFlags: 0
@@ -9952,6 +9951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3684812733639766100}
+  - component: {fileID: 6308173114839393081}
   m_Layer: 0
   m_Name: RocketParent
   m_TagString: Untagged
@@ -9976,6 +9976,19 @@ Transform:
   - {fileID: 7923430615606826668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6308173114839393081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766666126324332995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbb622ef364d124c9908ba86a0e071c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refrence: {fileID: 2914282305216338836}
 --- !u!1 &5232593860868648814
 GameObject:
   m_ObjectHideFlags: 0

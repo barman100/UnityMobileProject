@@ -314,14 +314,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeb760762c05ef4bb2c5d0863ed7ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 4615754443289072440}
-  boom: {fileID: 4679326538376785894}
-  ExplosionCollider: {fileID: 3350572744580181375}
-  MineBase: {fileID: 5444314547643849224}
-  MineLamp: {fileID: 7278573485723783554}
-  ExplosionSource: {fileID: 7756656676914558800}
-  Beep: {fileID: 2988381749576583426}
-  Explosion: {fileID: 7104251898367253630}
+  _anim: {fileID: 4615754443289072440}
+  _boom: {fileID: 4679326538376785894}
+  _explosionCollider: {fileID: 3350572744580181375}
+  _mineBase: {fileID: 5444314547643849224}
+  _mineLamp: {fileID: 7278573485723783554}
+  _explosionSource: {fileID: 7756656676914558800}
+  _beep: {fileID: 2988381749576583426}
+  _explosion: {fileID: 7104251898367253630}
 --- !u!82 &2988381749576583426
 AudioSource:
   m_ObjectHideFlags: 0

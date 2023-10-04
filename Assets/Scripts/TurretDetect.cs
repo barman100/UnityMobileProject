@@ -1,91 +1,86 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 public class TurretDetect : MonoBehaviour
 {
-    [SerializeField] GameObject RocketReserved;
-    [SerializeField] Transform Player;
-    [SerializeField] GameObject Rocket;
-    [SerializeField] public RocketHit RocketFire;
-    [SerializeField] float FireDelay = 3;
-    [SerializeField] public float ReloadDelay = 3;
+    [SerializeField] private GameObject _rocketReserved;
+    [SerializeField] private Transform _player;
+    [SerializeField] private float _fireDelay = 3;
+    [SerializeField] private float _reloadDelay = 3;
 
-    private float ReloadTimer = 0;
-    private float FireTimer = 0;
-    private Quaternion InitialRotation;
-    private bool isFired = false;
-    public bool isLockedOn = false;
-    public bool isGunLoaded = true;
+    private RocketHit _rocketFire;
+    private GameObject _rocket;
+    private float _reloadTimer = 0;
+    private float _fireTimer = 0;
+    private Quaternion _initialRotation;
+    private bool _isFired = false;
+    public bool _isLockedOn = false;
+    public bool _isGunLoaded = true;
 
 
     public void TriggerAlarm()
     {
-        isLockedOn = !isLockedOn;
+        _isLockedOn = !_isLockedOn;
     }
 
     private void Start()
     {
-        Rocket = Instantiate(RocketReserved, transform.position, transform.rotation, transform);
-        RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
-        isFired = false;
-        Rocket.transform.localPosition = new Vector3(3, 0, 1);
+        _rocket = Instantiate(_rocketReserved, transform.position, transform.rotation, transform);
+        _rocketFire = _rocket.GetComponent<RocketRefrence>().refrence;
+        _isFired = false;
+        _rocket.transform.localPosition = new Vector3(3, 0, 1);
         
-        InitialRotation = transform.rotation;
+        _initialRotation = transform.rotation;
 
     }
 
 
     void Update()
     {
-        if (isLockedOn)
+        if (_isLockedOn)
         { 
             Quaternion rotation = Quaternion.LookRotation
-              (Player.position - transform.position, transform.TransformDirection(Vector3.up));
+              (_player.position - transform.position, transform.TransformDirection(Vector3.up));
             
             
 
             transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            if (isFired == false)
+            if (_isFired == false)
             {
-                if (FireTimer > FireDelay)
+                if (_fireTimer > _fireDelay)
                 {
                     Debug.Log("Fired");
-                    Rocket.transform.parent = null;
-                    ReloadTimer = 0;
-                    isFired = true;
-                    RocketFire.IgniteThrusters();
-                    Rocket = Instantiate(RocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
-                    RocketFire = Rocket.transform.GetChild(1).GetComponent<RocketHit>();
-                    Rocket.transform.localPosition = new Vector3(0, 0, 1);
+                    _rocket.transform.parent = null;
+                    _reloadTimer = 0;
+                    _isFired = true;
+                    _rocketFire.IgniteThrusters();
+                    _rocket = Instantiate(_rocketReserved, new Vector3(0, 0, 1), transform.rotation, transform);
+                    _rocketFire = _rocket.transform.GetChild(1).GetComponent<RocketHit>();
+                    _rocket.transform.localPosition = new Vector3(0, 0, 1);
                 }
                 else
                 {
-                    FireTimer += Time.deltaTime;
+                    _fireTimer += Time.deltaTime;
                     Debug.Log("Aiming");
                 }
             }
         }
         else
         {
-            FireTimer = 0;
+            _fireTimer = 0;
         }
-        if (isFired && ReloadTimer > ReloadDelay)
+        if (_isFired && _reloadTimer > _reloadDelay)
         {
             Debug.Log("Reloading Finished");
-            FireTimer = 0;
-            isFired = false;
+            _fireTimer = 0;
+            _isFired = false;
             
-            Rocket.transform.localPosition = new Vector3(3,0,1);
+            _rocket.transform.localPosition = new Vector3(3,0,1);
         }
-        else if (isFired)
+        else if (_isFired)
         {
             Debug.Log("Reloading");
-            ReloadTimer += Time.deltaTime;
+            _reloadTimer += Time.deltaTime;
         }
 
 

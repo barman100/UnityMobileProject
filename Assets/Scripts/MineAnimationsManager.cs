@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class MineAnimationsManager : MonoBehaviour
 {
-    [SerializeField] Animator anim;
-    [SerializeField] ParticleSystem boom;
-    [SerializeField] CircleCollider2D ExplosionCollider;
-    [SerializeField] GameObject MineBase;
-    [SerializeField] SpriteRenderer MineLamp;
-    [SerializeField] GameObject ExplosionSource;
-    [SerializeField] AudioSource Beep;
-    [SerializeField] AudioSource Explosion;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private ParticleSystem _boom;
+    [SerializeField] private CircleCollider2D _explosionCollider;
+    [SerializeField] private GameObject _mineBase;
+    [SerializeField] private SpriteRenderer _mineLamp;
+    [SerializeField] private GameObject _explosionSource;
+    [SerializeField] private AudioSource _beep;
+    [SerializeField] private AudioSource _explosion;
  
 
     public void ExitWarningRange()
     {
-        Beep.enabled = false;
-        anim.SetBool("IsWarning", false);
+        _beep.enabled = false;
+        _anim.SetBool("IsWarning", false);
     }
 
     public void TriggerWarning()
     {
-        Beep.enabled = true;
-        anim.SetBool("IsWarning", true);
+        _beep.enabled = true;
+        _anim.SetBool("IsWarning", true);
     }
 
     public void TriggerExplosion(Blob player)
@@ -31,10 +31,10 @@ public class MineAnimationsManager : MonoBehaviour
         int i = 0;
         while (i < 10)
         {
-            Beep.pitch += 0.5f;
+            _beep.pitch += 0.5f;
             i++;
         }
-        anim.SetTrigger("IsBoom");
+        _anim.SetTrigger("IsBoom");
        
         StartCoroutine(DelayedBoom(player));
     }
@@ -48,11 +48,11 @@ public class MineAnimationsManager : MonoBehaviour
     
     public void Boom()
     {
-        Explosion.Play();
-        ExplosionCollider.enabled = true;
-        MineBase.SetActive(false);
-        MineLamp.enabled = false;
-        boom.Play();
-        Destroy(ExplosionSource, 1f);
+        _explosion.Play();
+        _explosionCollider.enabled = true;
+        _mineBase.SetActive(false);
+        _mineLamp.enabled = false;
+        _boom.Play();
+        Destroy(_explosionSource, 1f);
     }
 }

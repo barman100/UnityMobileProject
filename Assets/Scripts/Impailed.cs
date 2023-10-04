@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using UnityEngine;
-using System;
+
 
 public class Impailed : MonoBehaviour
 {
-    [SerializeField] string CauseOfDeath;
-    [SerializeField] GameManager gameManager;
+    [SerializeField] private string _causeOfDeath;
+    [SerializeField] private GameManager _gameManager;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
             
-            gameManager.CauseOfDeath = CauseOfDeath;
+            _gameManager.CauseOfDeath = _causeOfDeath;
             GameManager.PlayerDied = true;
             Debug.Log("player dead");
         }

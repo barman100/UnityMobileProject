@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Alarm : MonoBehaviour
 {
-    [SerializeField] TurretDetect Barrel;
+    [SerializeField] private TurretDetect _barrel;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
-        { Barrel.TriggerAlarm(); }
+        { _barrel.TriggerAlarm(); }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
-        { Barrel.TriggerAlarm(); }
+        { _barrel.TriggerAlarm(); }
     }
 }

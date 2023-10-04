@@ -1,52 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 
 public class RocketHit : MonoBehaviour
 {
-    public float Speed = 1;
-    [SerializeField] ParticleSystem RocketBlowUp;
-    [SerializeField] SpriteRenderer RocketBody;
-    [SerializeField] ParticleSystem Trail;
-    [SerializeField] public TurretDetect turretDetRef;
+    [SerializeField] private float _speed = 10;
+    [SerializeField] private ParticleSystem _rocketBlowUp;
+    [SerializeField] private SpriteRenderer _rocketBody;
+    [SerializeField] private ParticleSystem _trail;
+    [SerializeField] private TurretDetect _turretDetRef;
     [SerializeField] private Collider2D _explosion;
        
+    private bool _rocketDestroyed = false;
+    private bool _isFlying = false;
 
-    private bool RocketDestroyed = false;
-    public bool isFlying = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player" || collision.gameObject.tag == "Sticky")
         {
-            RocketDestroyed = true;
-            isFlying = false;
-            RocketBlowUp.Play();
+            _rocketDestroyed = true;
+            _isFlying = false;
+            _rocketBlowUp.Play();
+            _explosion.enabled = true;
+            _rocketBody.enabled = false;
+            _trail.enableEmission = false;
+
             collision.gameObject.TryGetComponent(out Blob playerBlob);
             if (playerBlob != null)
                 playerBlob.TrigThis();
-            _explosion.enabled = true;
-            RocketBody.enabled = false;
-            Trail.enableEmission = false;
+
             Destroy(transform.parent.gameObject, 1f);
         }
     }
 
     void Update()
     {
-        if (isFlying)
+        ControlRocket();
+    }
+
+    private void ControlRocket()
+    {
+        if (_isFlying)
         {
-            if (!RocketDestroyed)
+            if (!_rocketDestroyed)
             {
-                transform.parent.transform.position += transform.right * Speed * Time.deltaTime;
+                transform.parent.transform.position += transform.right * _speed * Time.deltaTime;
             }
         }
     }
 
     public void IgniteThrusters()
     {
-        isFlying = true;
-        Trail.Play();
+        _isFlying = true;
+        _trail.Play();
 
     }
 }

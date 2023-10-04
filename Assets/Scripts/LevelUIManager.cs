@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -7,53 +5,61 @@ using TMPro;
 public class LevelUIManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject WinScreen;
-    [SerializeField] TextMeshProUGUI Score;
-    [SerializeField] TextMeshProUGUI DeathMessage;
-    private const string SCORE_PREFIX = "Score: \n";
-    [SerializeField] GameObject[] Stars;
-    [SerializeField] GameObject DeathScreen;
-    [SerializeField] GameObject PauseMenu;
-    [SerializeField] GameManager GameManager;
+    [SerializeField] private GameObject _winScreen;
+    [SerializeField] private TextMeshProUGUI _score;
+    [SerializeField] private TextMeshProUGUI _deathMessage;
+    [SerializeField] private GameObject[] _stars;
+    [SerializeField] private GameObject _deathScreen;
+    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameManager _gameManager;
 
-    bool isPaused = false;
+    private const string SCORE_PREFIX = "Score: \n";
+    private bool _isPaused = false;
 
     void Start()
     {
-        foreach (var item in Stars)
+        DisableStarsUI();
+    }
+
+    private void DisableStarsUI()
+    {
+        foreach (var item in _stars)
         {
             item.SetActive(false);
         }
     }
+
     public void TogglePause()
     {
-        isPaused = !isPaused;
-        PauseMenu.SetActive(isPaused);
+        _isPaused = !_isPaused;
+        _pauseMenu.SetActive(_isPaused);
     }
 
     public void LoadCompletedLevelScreen()
     {
-        // get score calculate stars show stars
-        
-        
-        int stars = GameManager.CalculateStars();
-        Score.text = SCORE_PREFIX + GameManager.Score;
+        ActiveStars();
+        _winScreen.SetActive(true);
+    }
+
+    private void ActiveStars()
+    {
+        int stars = _gameManager.CalculateStars();
+        _score.text = SCORE_PREFIX + _gameManager.Score;
         for (int i = 0; i < stars; i++)
         {
-            Stars[i].SetActive(true);
+            _stars[i].SetActive(true);
         }
-        WinScreen.SetActive(true);
     }
 
     public void LoadDeathScreen(string CauseOfDeath)
     {
-        DeathMessage.text = "You have been \n" + CauseOfDeath;
-        DeathScreen.SetActive(true);
+        _deathMessage.text = "You have been \n" + CauseOfDeath;
+        _deathScreen.SetActive(true);
     }
 
     public void GoToMainMenu()
     {
-        isPaused = false;
+        _isPaused = false;
         SceneManager.LoadScene("Main Menu");
     }
 

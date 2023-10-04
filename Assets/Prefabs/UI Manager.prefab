@@ -823,16 +823,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33d2bd889a951149ad68240c3c0d104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinScreen: {fileID: 5912021669957820707}
-  Score: {fileID: 2717150450994252316}
-  DeathMessage: {fileID: 2894673212918294186}
-  Stars:
+  _winScreen: {fileID: 5912021669957820707}
+  _score: {fileID: 2717150450994252316}
+  _deathMessage: {fileID: 2894673212918294186}
+  _stars:
   - {fileID: 919741777793585352}
   - {fileID: 2319612449424016175}
   - {fileID: 3097679139173818404}
-  DeathScreen: {fileID: 2766156036026760295}
-  PauseMenu: {fileID: 4758086754628519734}
-  GameManager: {fileID: 0}
+  _deathScreen: {fileID: 2766156036026760295}
+  _pauseMenu: {fileID: 4758086754628519734}
+  _gameManager: {fileID: 0}
 --- !u!1 &2202765919072643515
 GameObject:
   m_ObjectHideFlags: 0

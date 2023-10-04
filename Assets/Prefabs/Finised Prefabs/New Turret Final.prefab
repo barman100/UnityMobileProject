@@ -25,7 +25,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 9076022435864450722, guid: 573b40420222c614eade063f2987d4b6, type: 3}
+    - target: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
       propertyPath: RocketReserved
+      value: 
+      objectReference: {fileID: 4766666126324332995, guid: a7ad80be86434dc40ab913a28acaad10, type: 3}
+    - target: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
+      propertyPath: _rocketReserved
       value: 
       objectReference: {fileID: 4766666126324332995, guid: a7ad80be86434dc40ab913a28acaad10, type: 3}
     - target: {fileID: 2037073846935164812, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
@@ -181,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fe660d3c604dd41a37ada113dae478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barrel: {fileID: 3563883380636124251}
+  _barrel: {fileID: 3563883380636124251}
 --- !u!114 &3563883380636124251 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1769290339824756780, guid: 198cc46b97e48244b84aa61d71a50b40, type: 3}
