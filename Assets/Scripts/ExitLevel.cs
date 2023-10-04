@@ -10,6 +10,8 @@ public class ExitLevel : MonoBehaviour
     {
         if(collision.gameObject.tag == "player")
         {
+            
+            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

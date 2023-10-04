@@ -6,12 +6,12 @@ using System;
 
 public class Impailed : MonoBehaviour
 {
-
+    [SerializeField] AudioSource ImpailedSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            Debug.Log("player dead");
+            ImpailedSound.Play();
         }
     }
 

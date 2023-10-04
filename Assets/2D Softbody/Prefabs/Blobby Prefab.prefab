@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 6093525565293101965}
   - component: {fileID: 6093525565296702203}
   - component: {fileID: 6093525565303118457}
-  - component: {fileID: 7595064263846772930}
   - component: {fileID: 6093525565295960263}
   - component: {fileID: 6240147449037902413}
-  - component: {fileID: 6324536531402296905}
   - component: {fileID: 754910895448036455}
   m_Layer: 0
   m_Name: Blobby Prefab
@@ -98,27 +96,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &7595064263846772930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093525565292919659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75781c766d9f31644856e690e9a371df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RB: {fileID: 6093525565296702203}
-  Strength: 350
-  MaxLength: 5
-  Arrow: {fileID: 0}
-  ArrowSprite: {fileID: 0}
-  Target: {fileID: 0}
-  player: {fileID: 6093525565303118457}
-  Green: {x: 0.34375, y: 0.8476563, z: 0.2578125}
-  Red: {x: 0.7929688, y: 0.1289063, z: 0.078125}
+  StickyClip: {fileID: 0}
 --- !u!33 &6093525565295960263
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -169,14 +147,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!81 &6324536531402296905
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093525565292919659}
-  m_Enabled: 1
 --- !u!82 &754910895448036455
 AudioSource:
   m_ObjectHideFlags: 0
