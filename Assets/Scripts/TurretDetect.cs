@@ -16,8 +16,12 @@ public class TurretDetect : MonoBehaviour
     private bool _isFired = false;
     public bool _isLockedOn = false;
     public bool _isGunLoaded = true;
+    private bool isActive = true;
 
-
+    private void OnApplicationFocus(bool focus)
+    {
+        isActive = focus;
+    }
     public void TriggerAlarm()
     {
         _isLockedOn = !_isLockedOn;
@@ -37,6 +41,8 @@ public class TurretDetect : MonoBehaviour
 
     void Update()
     {
+       if (isActive)
+        {
         if (_isLockedOn)
         { 
             Quaternion rotation = Quaternion.LookRotation
@@ -83,6 +89,16 @@ public class TurretDetect : MonoBehaviour
             _reloadTimer += Time.deltaTime;
         }
 
+                Rocket.transform.localPosition = new Vector3(3, 0, 1);
+            }
+            else if (isFired)
+            {
+                Debug.Log("Reloading");
+                ReloadTimer += Time.deltaTime;
+            }
+
+
+        }
 
 
     }

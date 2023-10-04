@@ -31,14 +31,14 @@ public class RocketHit : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnApplicationFocus(bool focus)
     {
-        ControlRocket();
+        isActive = focus;
     }
 
-    private void ControlRocket()
+    void Update()
     {
-        if (_isFlying)
+        if (isFlying && isActive)
         {
             if (!_rocketDestroyed)
             {

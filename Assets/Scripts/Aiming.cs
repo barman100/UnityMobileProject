@@ -20,74 +20,112 @@ public class Aiming : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDr
     Vector3 _startPosition;
     Vector3 _offsetToMouse;
     float _zDistanceToCamera;
-    float size;
-    float powerRatio;
+    float size = 1;
+    float powerRatio = 1;
 
     [SerializeField] Vector3 Green = new Vector3((88/256), (217 / 256), (66 / 256));
     [SerializeField] Vector3 Red = new Vector3((203 / 256), (33 / 256), (20 / 256));
     Vector3 newColor;
+    
+
+    //Application Focus Functinoality
+
+    private bool isActive = true;
+    private Vector2 StoredVelocity = new Vector2 (0,0);
+
+
+    private void OnApplicationFocus(bool focus)
+    {
+        isActive = focus;
+        if (focus)
+        {
+            RB.constraints = RigidbodyConstraints2D.None;
+            RB.AddForce(StoredVelocity, ForceMode2D.Impulse);
+        }
+        else
+        {
+            StoredVelocity = RB.velocity;
+            RB.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        }
+    }
+
 
     #region Interface Implementations
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (isActive)
+        {
+            Debug.Log("OnPointerDown");
+                    Target.SetActive(true);
+                    Debug.Log(ArrowSprite.color);
+                    Target.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y,1);
+        }
         
-        Debug.Log("OnPointerDown");
-        Target.SetActive(true);
-        Debug.Log(ArrowSprite.color);
-        Target.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(eventData.position).x, Camera.main.ScreenToWorldPoint(eventData.position).y,1);
         
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Arrow.SetActive(true);
-        Arrow.transform.up = (Target.transform.position - Arrow.transform.position).normalized;
-        size = (Target.transform.position - Arrow.transform.position).magnitude;
-        Arrow.transform.localScale = new Vector3(1,size,1);
-        Debug.Log("OnBeginDrag");
-        DraggedInstance = Target;
-        _startPosition = transform.position;
-        _zDistanceToCamera = Mathf.Abs(_startPosition.z - Camera.main.transform.position.z);
+        if (isActive)
+        {
+            Arrow.SetActive(true);
+            Arrow.transform.up = (Target.transform.position - Arrow.transform.position).normalized;
+            size = (Target.transform.position - Arrow.transform.position).magnitude;
+            Arrow.transform.localScale = new Vector3(1,size,1);
+            Debug.Log("OnBeginDrag");
+            DraggedInstance = Target;
+            _startPosition = transform.position;
+            _zDistanceToCamera = Mathf.Abs(_startPosition.z - Camera.main.transform.position.z);
 
-        _offsetToMouse = _startPosition - Camera.main.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, _zDistanceToCamera - 1)
-        );
+            _offsetToMouse = _startPosition - Camera.main.ScreenToWorldPoint(
+                new Vector3(Input.mousePosition.x, Input.mousePosition.y, _zDistanceToCamera - 1)
+            );
+        }
+        
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
-        if (Input.touchCount > 1)
-            return;
+        if (isActive)
+        {
+            Debug.Log("OnDrag");
+            if (Input.touchCount > 1)
+                return;
+
+            Target.transform.position = Camera.main.ScreenToWorldPoint(
+                new Vector3(Input.mousePosition.x, Input.mousePosition.y, _zDistanceToCamera)
+                ) + _offsetToMouse;
+            Arrow.transform.up = (Target.transform.position - Arrow.transform.position).normalized;
+            size = (Target.transform.position - Arrow.transform.position).magnitude;
+            if (size > MaxLength) size = MaxLength;
+            powerRatio = size / MaxLength;
+            newColor = (powerRatio) * Red + (1 - powerRatio) * Green;
+            ArrowSprite.color = new UnityEngine.Color(newColor.x, newColor.y, newColor.z);
+            Arrow.transform.localScale = new Vector3(1, size, 1);
+        }
         
-        Target.transform.position = Camera.main.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, _zDistanceToCamera)
-            ) + _offsetToMouse;
-        Arrow.transform.up = (Target.transform.position - Arrow.transform.position).normalized;
-        size = (Target.transform.position - Arrow.transform.position).magnitude;
-        if (size>MaxLength) size = MaxLength;
-        powerRatio = size / MaxLength;
-        newColor = (powerRatio) * Red + (1 - powerRatio) * Green;
-        ArrowSprite.color = new UnityEngine.Color(newColor.x,newColor.y,newColor.z);
-        Arrow.transform.localScale = new Vector3(1, size, 1);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
-        Debug.Log("OnEndDrag");
-        GameManager.Jumps++;
-        DraggedInstance = null;
-        Target.SetActive(false);
-        Arrow.SetActive(false);
-        player.TrigThis();
+        if (isActive)
+        {
+            Debug.Log("OnEndDrag");
+            GameManager.Jumps++;
+            DraggedInstance = null;
+            Target.SetActive(false);
+            Arrow.SetActive(false);
+            player.TrigThis();
 
-        PlayerSound.clip = JumpSound;
-        PlayerSound.Play();
-        RB.AddForce(new Vector2(Target.transform.position.x - RB.transform.position.x, Target.transform.position.y - RB.transform.position.y).normalized * Strength * powerRatio, ForceMode2D.Impulse);
-        player.TrigThis();
-        _offsetToMouse = Vector3.zero;
+            PlayerSound.clip = JumpSound;
+            PlayerSound.Play();
+            RB.AddForce(new Vector2(Target.transform.position.x - RB.transform.position.x, Target.transform.position.y - RB.transform.position.y).normalized * Strength * powerRatio, ForceMode2D.Impulse);
+            player.TrigThis();
+            _offsetToMouse = Vector3.zero;
+        }
+        
 
     }
 

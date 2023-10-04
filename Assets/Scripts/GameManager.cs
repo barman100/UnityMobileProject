@@ -29,6 +29,13 @@ public class GameManager : MonoBehaviour
     public string CauseOfDeath { get; set; }  
 
 
+    private bool isActive = true;
+
+    private void OnApplicationFocus(bool focus)
+    {
+        isActive = focus;
+    }
+
     void Start()
     {
         InitializeValues();
